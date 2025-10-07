@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# At this point, to secure GitHub token of committing it by accident
+.env
