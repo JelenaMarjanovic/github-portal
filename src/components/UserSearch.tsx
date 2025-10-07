@@ -20,7 +20,8 @@ const UserSearch = () => {
       console.log(data);
 
       return data;
-    }
+    },
+    enabled: !!submittedUsername
   });
 
   return (
