@@ -42,6 +42,26 @@ const UserSearch = () => {
 
         <button type="submit">Search</button>
       </form>
+
+      {isLoading && <p className="status">Loading...</p>}
+
+      {isError && <p className="status error">{error.message}</p>}
+
+      {data && (
+        <div className="user-card">
+          <img src={data.avatar_url} alt={data.name} className="avatar" />
+          <h2>{data.name || data.login}</h2>
+          <p className="bio">{data.bio}</p>
+          <a
+            href={data.html_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="profile-btn"
+          >
+            View GitHub Profile
+          </a>
+        </div>
+      )}
     </>
   );
 };
