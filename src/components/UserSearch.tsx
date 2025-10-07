@@ -24,9 +24,15 @@ const UserSearch = () => {
     enabled: !!submittedUsername
   });
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    setSubmittedUsername(username.trim());
+  };
+
   return (
     <>
-      <form className="form">
+      <form onSubmit={handleSubmit} className="form">
         <input
           type="text"
           placeholder="Enter GitHub Username..."
