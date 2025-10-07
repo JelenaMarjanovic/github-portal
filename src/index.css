@@ -31,3 +31,37 @@ h1 {
   margin-bottom: 1.5rem;
   color: #222;
 }
+
+/* Form */
+.form {
+  position: relative;
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+
+input[type='text'] {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: 0.2s ease;
+}
+
+input[type='text']:focus {
+  border-color: #0077ff;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 119, 255, 0.2);
+}
+
+button {
+  padding: 0.75rem 1.2rem;
+  font-size: 1rem;
+  background-color: #0077ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
