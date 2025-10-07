@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { FaGithubAlt } from 'react-icons/fa';
 import { fetchGithubUser } from '../api/github';
+import UserCard from './UserCard';
 
 const UserSearch = () => {
   const [username, setUsername] = useState('');
@@ -36,21 +36,7 @@ const UserSearch = () => {
 
       {isError && <p className="status error">{error.message}</p>}
 
-      {data && (
-        <div className="user-card">
-          <img src={data.avatar_url} alt={data.name} className="avatar" />
-          <h2>{data.name || data.login}</h2>
-          <p className="bio">{data.bio}</p>
-          <a
-            href={data.html_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="profile-btn"
-          >
-            <FaGithubAlt /> View GitHub Profile
-          </a>
-        </div>
-      )}
+      {data && <UserCard user={data} />}
     </>
   );
 };
