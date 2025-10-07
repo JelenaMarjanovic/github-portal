@@ -6,6 +6,7 @@ import UserCard from './UserCard';
 const UserSearch = () => {
   const [username, setUsername] = useState('');
   const [submittedUsername, setSubmittedUsername] = useState('');
+  const [recentUsers, setRecentUsers] = useState<string[]>([]);
 
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ['users', submittedUsername],
@@ -16,7 +17,24 @@ const UserSearch = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    setSubmittedUsername(username.trim());
+    const trimmedUsername = username.trim();
+
+    if (!trimmedUsername) {
+      return;
+    }
+
+    setSubmittedUsername(trimmedUsername);
+
+    setRecentUsers(prev => {
+      const updated = [
+        trimmedUsername,
+        ...prev.filter(user => user !== trimmedUsername)
+      ];
+
+      return updated.slice(0, 5); // return only last five recent searches
+    });
+
+    console.log(recentUsers);
   };
 
   return (
