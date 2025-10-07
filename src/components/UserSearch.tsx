@@ -28,6 +28,7 @@ const UserSearch = () => {
     }
 
     setSubmittedUsername(trimmedUsername);
+    setUsername('');
 
     setRecentUsers(prev => {
       const updated = [
