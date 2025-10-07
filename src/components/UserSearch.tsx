@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { fetchGithubUser } from '../api/github';
 import UserCard from './UserCard';
+import { FaClock, FaUser } from 'react-icons/fa';
 
 const UserSearch = () => {
   const [username, setUsername] = useState('');
@@ -33,8 +34,6 @@ const UserSearch = () => {
 
       return updated.slice(0, 5); // return only last five recent searches
     });
-
-    console.log(recentUsers);
   };
 
   return (
@@ -55,6 +54,30 @@ const UserSearch = () => {
       {isError && <p className="status error">{error.message}</p>}
 
       {data && <UserCard user={data} />}
+
+      {recentUsers.length > 0 && (
+        <div className="recent-searches">
+          <div className="recent-header">
+            <FaClock />
+            <h3>Recent Searches</h3>
+          </div>
+          <ul>
+            {recentUsers.map(user => (
+              <li key={user}>
+                <button
+                  onClick={() => {
+                    setUsername(user);
+                    setSubmittedUsername(user);
+                  }}
+                >
+                  <FaUser className="user-icon" />
+                  {user}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </>
   );
 };
