@@ -85,6 +85,15 @@ const UserSearch = () => {
                 } else {
                   refetch();
                 }
+
+                setRecentUsers(prev => {
+                  const updated = [
+                    selectedUser,
+                    ...prev.filter(user => user !== selectedUser)
+                  ];
+
+                  return updated.slice(0, 5);
+                });
               }}
             />
           )}
