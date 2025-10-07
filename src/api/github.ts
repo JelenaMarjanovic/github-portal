@@ -1,7 +1,7 @@
+export const GITHUB_API_URL = 'https://api.github.com';
+
 export const fetchGithubUser = async (username: string) => {
-  const res = await fetch(
-    `${import.meta.env.VITE_GITHUB_API_URL}/users/${username}`
-  );
+  const res = await fetch(`${GITHUB_API_URL}/users/${username}`);
 
   if (!res.ok) {
     throw new Error('User not found.');
@@ -13,9 +13,7 @@ export const fetchGithubUser = async (username: string) => {
 };
 
 export const searchGithubUser = async (query: string) => {
-  const res = await fetch(
-    `${import.meta.env.VITE_GITHUB_API_URL}/search/users?q=${query}`
-  );
+  const res = await fetch(`${GITHUB_API_URL}/search/users?q=${query}`);
 
   if (!res.ok) {
     throw new Error('User not found.');
